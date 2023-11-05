@@ -7,29 +7,38 @@
 // [“Russia”, “Denmark”, “Kazan”] → []
 
 
-//тело программы 
+//---------------------------------------------ТЕЛО------------------------------------------------ 
+
+// создаем переменную для хранения размера первого массива, инициализируем ее значением полученным от пользователя
 int arrSize = ReadData("Введите размер массива: ");
+//переменная для хранения длины строки, уканной в условии задачи
 int maxLength = 3;
+//переменная для сохранения количества строк, соответствующих критерию, заданному в условии задачи
 int lessOrEquel3Chars = 0;
+//создаем и инициализируем переменную для хранения начального массива
 string[] arr = CreateArray(arrSize);
+//создаем и инициализируем переменную для хранения итогового массива
 string[] arrResult = WordsLessThen3(lessOrEquel3Chars, arr);
+//выводим на экран содержимое начального и итогового массивов
 Console.Write($"{ArrayToString(arr)} → {ArrayToString(arrResult)}");
 
 
 
-//методы
+//-----------------------------------------------МЕТОДЫ-------------------------------------------
+
+//метод считывает данные из консоли и преобразует в формат integer
 int ReadData(string msg)
 {
     Console.Write(msg);
     return int.Parse(Console.ReadLine() ?? "0");
 }
-
+//метод считывает данные из консоли 
 string ReadDataString(string msg)
 {
     Console.Write(msg);
     return Console.ReadLine() ?? "0";
 }
-
+//метод для преобразования массива в строку для дальнейшего вывода на экран
 string ArrayToString(string[] arr)
 {
     if (arr.Length > 0)
@@ -47,7 +56,8 @@ string ArrayToString(string[] arr)
         return "[]";
     }
 }
-
+//метод для создания массива указанного размера и заполнения его значениями, введенными пользователем, а так же для подсчета 
+//количества строк соответствующих критерию - длина меньше, либо равна 3 символам.
 string[] CreateArray(int arrLength)
 {
     string[] arr = new string[arrLength];
@@ -55,7 +65,7 @@ string[] CreateArray(int arrLength)
 
     for (int i = 0; i < arr.Length; i++)
     {
-        str = ReadDataString("Введите последовательность знаков: ");
+        str = ReadDataString("Введите строку: ");
         arr[i] = str;
         if (str.Length <= maxLength)
         {
@@ -64,7 +74,7 @@ string[] CreateArray(int arrLength)
     }
     return arr;
 }
-
+//метод для создания и заполнения итогового массива строками, соответствующими критерию, заданному в условии задачи
 string[] WordsLessThen3(int arrLength, string[] arr)
 {
     string[] arrResultult = new string[arrLength];
